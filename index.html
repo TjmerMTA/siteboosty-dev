@@ -4,25 +4,60 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SiteBoosty dev — демо</title>
+<meta name="description" content="Чернетки сайтів для клієнтів SiteBoosty. Закрито від пошуковиків.">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="preload" href="mp-service/fonts/roboto-flex-wide-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="mp-service/fonts/roboto-flex-wide-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
- body { margin: 0; background: #efede6; color: #16140f; font: 17px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
- main { max-width: 640px; margin: 0 auto; padding: 48px 16px; }
- h1 { font-size: 2rem; margin: 0 0 8px; }
- p { color: #4a463d; margin: 0 0 28px; }
- ul { list-style: none; margin: 0; padding: 0; border-top: 2px solid #16140f; }
- li { border-bottom: 1px solid #cfc9bc; }
- a { display: block; padding: 16px 0; color: inherit; text-decoration: none; font-weight: 600; font-size: 1.15rem; }
- a span { display: block; font-weight: 400; font-size: .95rem; color: #4a463d; }
- a:hover { background: #fff3a8; }
+ @font-face { font-family: "RF Wide"; font-weight: 400 600; font-display: swap; src: url(mp-service/fonts/roboto-flex-wide-cyrillic.woff2) format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+ @font-face { font-family: "RF Wide"; font-weight: 400 600; font-display: swap; src: url(mp-service/fonts/roboto-flex-wide-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+02BC, U+2013, U+2014, U+2019, U+201C, U+201D, U+2026, U+2192; }
+ @font-face { font-family: "RF Wide Fallback"; src: local("Arial"), local("ArialMT"), local("Roboto"), local("Helvetica"); size-adjust: 111%; }
+ :root { --bg: #0b0b0b; --card: #141414; --border: #242424; --text: #fff; --muted: #a0a0a0; --accent: #d8223e; color-scheme: dark; }
+ * { box-sizing: border-box; }
+ body { margin: 0; background: var(--bg); color: var(--muted); font: 400 15px/1.6 "RF Wide", "RF Wide Fallback", Arial, sans-serif; }
+ main { max-width: 760px; margin: 0 auto; padding: 56px 16px 64px; }
+ .kicker { display: flex; gap: 10px; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 14px; }
+ .kicker i { color: var(--accent); font-style: normal; letter-spacing: 0; }
+ .title { display: flex; align-items: center; gap: 24px; margin: 0 0 14px; }
+ h1 { color: var(--text); font-size: clamp(1.8rem, 7vw, 2.6rem); font-weight: 500; line-height: 1.1; margin: 0; }
+ .title::after { content: ""; flex: 1 0 32px; height: 1px; background: var(--accent); }
+ .lead { margin: 0 0 34px; }
+ ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+ .card { display: grid; grid-template-columns: 1fr; text-decoration: none; color: var(--muted); background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color .2s; }
+ .card:hover { border-color: #5a1d27; }
+ .card__img { height: 170px; }
+ .card__img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.75) saturate(.85);
+   -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent); mask-image: linear-gradient(to bottom, #000 40%, transparent); }
+ .card__body { padding: 4px 22px 24px; }
+ .card h2 { color: var(--text); font-size: 1.2rem; font-weight: 500; margin: 0 0 6px; }
+ .card p { margin: 0 0 18px; font-size: .9rem; }
+ .pill { display: inline-flex; align-items: center; gap: 14px; min-height: 46px; padding: 8px 22px; border: 1px solid var(--accent); border-radius: 999px; color: var(--text); font-weight: 500; font-size: .9rem; }
+ .card:hover .pill { background: rgba(216, 34, 62, .12); }
+ .pill svg { width: 40px; height: 10px; color: var(--accent); }
+ @media (min-width: 640px) {
+   .card { grid-template-columns: 240px 1fr; }
+   .card__img { height: auto; min-height: 200px; }
+   .card__img img { -webkit-mask-image: linear-gradient(to right, #000 55%, transparent); mask-image: linear-gradient(to right, #000 55%, transparent); }
+   .card__body { padding: 28px 28px 28px 8px; align-self: center; }
+ }
+ @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
 </style>
 </head>
 <body>
 <main>
- <h1>SiteBoosty dev — демо</h1>
- <p>Чернетки сайтів для клієнтів. Сторінки закриті від пошуковиків.</p>
+ <p class="kicker"><i>///</i>SiteBoosty dev</p>
+ <div class="title"><h1>Демо сайтів</h1></div>
+ <p class="lead">Чернетки сайтів для клієнтів. Сторінки закриті від пошуковиків.</p>
  <ul>
-  <li><a href="mp-service/">MP Service — СТО в Одесі<span>Редизайн mp-service.od.ua · листопад 2026</span></a></li>
+  <li><a class="card" href="mp-service/">
+   <div class="card__img"><img src="mp-service/img/shop-hall.webp" alt="" width="640" height="800" loading="lazy" decoding="async"></div>
+   <div class="card__body">
+    <h2>MP Service — СТО в Одесі</h2>
+    <p>Редизайн mp-service.od.ua · листопад 2026</p>
+    <span class="pill">Відкрити демо <svg viewBox="0 0 44 10" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M0 5h42M37.5 1l4.5 4-4.5 4"/></svg></span>
+   </div>
+  </a></li>
  </ul>
 </main>
 </body>
